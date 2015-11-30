@@ -14,6 +14,8 @@ Copy `flycheck-gometalinter.el` file to `load-path` and add to `init.el`.
 
 ```
 (require 'flycheck-gometalinter)
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-gometalinter-setup))
 ```
 
 [flycheck-ref]: http://www.flycheck.org                 "Flycheck"

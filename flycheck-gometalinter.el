@@ -54,6 +54,14 @@ See URL: `https://github.com/alecthomas/gometalinter'"
           (optional column) ":warning: " (message) line-end))
    :modes go-mode)
 
-(add-to-list 'flycheck-checkers 'gometalinter)
+
+;;;###autoload
+(defun flycheck-gometalinter-setup ()
+  "Setup Flycheck gometalinter.
+Add `gometalinter' to `flycheck-checkers'."
+  (interactive)
+  (add-to-list 'flycheck-checkers 'gometalinter))
 
 (provide 'flycheck-gometalinter)
+
+;;; flycheck-gometalinter.el ends here
