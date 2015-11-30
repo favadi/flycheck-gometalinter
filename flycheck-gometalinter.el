@@ -46,7 +46,8 @@
 (flycheck-define-checker gometalinter
   "A all-in-one Go linter.
 See URL: `https://github.com/alecthomas/gometalinter'"
-  :command ("gometalinter" "--vendor")  ;TODO: allow custom options
+  :command ("gometalinter"
+            (option-flag "--vendor" flycheck-gometalinter-vendor))
   :error-patterns
   ((error line-start (file-name) ":" line ":"
           (optional column) ":error: " (message) line-end)

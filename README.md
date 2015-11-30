@@ -16,6 +16,13 @@ Copy `flycheck-gometalinter.el` file to `load-path` and add to `init.el`.
 (require 'flycheck-gometalinter)
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-gometalinter-setup))
+  ```
+
+## Configuration
+
+```
+;; skips 'vendor' directories and sets GO15VENDOREXPERIMENT=1
+(setq flycheck-gometalinter-vendor t)
 ```
 
 [flycheck-ref]: http://www.flycheck.org                 "Flycheck"
