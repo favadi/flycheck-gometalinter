@@ -43,11 +43,19 @@
 
 (require 'flycheck)
 
+(flycheck-def-option-var flycheck-gometalinter-disable-linters
+    nil go-metalinter
+  "List of linters to disable"
+  :type '(repeat (string :tag "linter"))
+  :safe #'flycheck-string-list-p)
+
 (flycheck-define-checker gometalinter
   "A all-in-one Go linter.
 See URL: `https://github.com/alecthomas/gometalinter'"
   :command ("gometalinter"
-            (option-flag "--vendor" flycheck-gometalinter-vendor))
+            (option-flag "--vendor" flycheck-gometalinter-vendor)
+            (option "--disable=" flycheck-gometalinter-disable-linters concat
+                    flycheck-option-comma-separated-list))
   :error-patterns
   ((error line-start (file-name) ":" line ":"
           (optional column) ":error: " (message) line-end)

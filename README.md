@@ -23,6 +23,8 @@ Copy `flycheck-gometalinter.el` file to `load-path` and add to `init.el`.
 ```
 ;; skips 'vendor' directories and sets GO15VENDOREXPERIMENT=1
 (setq flycheck-gometalinter-vendor t)
+;; disable linters
+(setq flycheck-gometalinter-disable-linters '("gotype" "gocyclo"))
 ```
 
 [flycheck-ref]: http://www.flycheck.org                 "Flycheck"
