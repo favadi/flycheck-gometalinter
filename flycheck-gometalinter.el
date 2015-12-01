@@ -1,4 +1,4 @@
-;; gometalinter.el -- flycheck checker for gometalinter
+;;; flycheck-gometalinter.el --- flycheck checker for gometalinter
 
 ;; Copyright (c) 2015, Diep Pham
 ;; All rights reserved.
