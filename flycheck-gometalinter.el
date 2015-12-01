@@ -43,18 +43,44 @@
 
 (require 'flycheck)
 
+(flycheck-def-option-var flycheck-gometalinter-vendor nil gometalinter
+  "Skips 'vendor' directories and sets GO15VENDOREXPERIMENT=1."
+  :safe #'booleanp
+  :type 'boolean)
+
+(flycheck-def-option-var flycheck-gometalinter-disable-all nil gometalinter
+  "Disable all linters, ony enable those defined in
+flycheck-gometalinter-enable-linters."
+  :safe #'booleanp
+  :type 'boolean)
+
 (flycheck-def-option-var flycheck-gometalinter-disable-linters
-    nil go-metalinter
-  "List of linters to disable"
+    nil gometalinter
+  "List of linters to disable."
   :type '(repeat (string :tag "linter"))
   :safe #'flycheck-string-list-p)
+
+(flycheck-def-option-var flycheck-gometalinter-enable-linters
+    nil gometalinter
+  "List of linters to enable, use with flycheck-gometalinter-disable-all."
+  :type '(repeat (string :tag "linter"))
+  :safe #'flycheck-string-list-p)
+
+(flycheck-def-option-var flycheck-gometalinter-deadline "5s" gometalinter
+  "Cancel linters if they have not completed within this
+  duration."
+  :safe #'stringp)
 
 (flycheck-define-checker gometalinter
   "A all-in-one Go linter.
 See URL: `https://github.com/alecthomas/gometalinter'"
   :command ("gometalinter"
             (option-flag "--vendor" flycheck-gometalinter-vendor)
+            (option-flag "--disable-all" flycheck-gometalinter-disable-all)
+            (option "--deadline=" flycheck-gometalinter-deadline concat)
             (option "--disable=" flycheck-gometalinter-disable-linters concat
+                    flycheck-option-comma-separated-list)
+            (option "--enable=" flycheck-gometalinter-enable-linters concat
                     flycheck-option-comma-separated-list))
   :error-patterns
   ((error line-start (file-name) ":" line ":"
