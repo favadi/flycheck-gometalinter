@@ -82,7 +82,7 @@ See URL: `https://github.com/alecthomas/gometalinter'"
   :command ("gometalinter"
             (option-flag "--vendor" flycheck-gometalinter-vendor)
             (option-flag "--disable-all" flycheck-gometalinter-disable-all)
-            (option-flag "--disable-all" flycheck-gometalinter-fast)
+            (option-flag "--fast" flycheck-gometalinter-fast)
             (option "--deadline=" flycheck-gometalinter-deadline concat)
             (option-list "--disable=" flycheck-gometalinter-disable-linters concat)
             (option-list "--enable=" flycheck-gometalinter-enable-linters concat))
