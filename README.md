@@ -42,6 +42,10 @@ For `use-package` user:
 ```elisp
 ;; skips 'vendor' directories and sets GO15VENDOREXPERIMENT=1
 (setq flycheck-gometalinter-vendor t)
+;; only run fast linters
+(setq flycheck-gometalinter-fast t)
+;; use in tests files
+(setq flycheck-gometalinter-tets t)
 ;; disable linters
 (setq flycheck-gometalinter-disable-linters '("gotype" "gocyclo"))
 ;; Only enable selected linters
