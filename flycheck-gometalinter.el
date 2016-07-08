@@ -53,6 +53,11 @@
   :safe #'booleanp
   :type 'boolean)
 
+(flycheck-def-option-var flycheck-gometalinter-tests nil gometalinter
+  "Include test files for linters that support this option."
+  :safe #'booleanp
+  :type 'boolean)
+
 (flycheck-def-option-var flycheck-gometalinter-disable-all nil gometalinter
   "Disable all linters, ony enable those defined in
 flycheck-gometalinter-enable-linters."
@@ -83,6 +88,7 @@ See URL: `https://github.com/alecthomas/gometalinter'"
             (option-flag "--vendor" flycheck-gometalinter-vendor)
             (option-flag "--disable-all" flycheck-gometalinter-disable-all)
             (option-flag "--fast" flycheck-gometalinter-fast)
+            (option-flag "--tests" flycheck-gometalinter-tests)
             (option "--deadline=" flycheck-gometalinter-deadline concat)
             (option-list "--disable=" flycheck-gometalinter-disable-linters concat)
             (option-list "--enable=" flycheck-gometalinter-enable-linters concat))
