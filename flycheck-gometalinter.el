@@ -91,7 +91,8 @@ See URL: `https://github.com/alecthomas/gometalinter'"
             (option-flag "--tests" flycheck-gometalinter-tests)
             (option "--deadline=" flycheck-gometalinter-deadline concat)
             (option-list "--disable=" flycheck-gometalinter-disable-linters concat)
-            (option-list "--enable=" flycheck-gometalinter-enable-linters concat))
+            (option-list "--enable=" flycheck-gometalinter-enable-linters concat)
+            ".")
   :error-patterns
   ((error line-start (file-name) ":" line ":"
           (optional column) ":error: " (message) line-end)
