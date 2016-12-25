@@ -43,6 +43,11 @@
 
 (require 'flycheck)
 
+(flycheck-def-option-var flycheck-gometalinter-concurrency nil gometalinter
+  "Number of concurrent linters to run."
+  :safe #'integerp
+  :type 'integer)
+
 (flycheck-def-option-var flycheck-gometalinter-vendor nil gometalinter
   "Skips 'vendor' directories and sets GO15VENDOREXPERIMENT=1."
   :safe #'booleanp
@@ -85,6 +90,7 @@ flycheck-gometalinter-enable-linters."
   "A all-in-one Go linter.
 See URL: `https://github.com/alecthomas/gometalinter'"
   :command ("gometalinter"
+            (option "--concurrency=" flycheck-gometalinter-concurrency concat flycheck-option-int)
             (option-flag "--vendor" flycheck-gometalinter-vendor)
             (option-flag "--disable-all" flycheck-gometalinter-disable-all)
             (option-flag "--fast" flycheck-gometalinter-fast)
