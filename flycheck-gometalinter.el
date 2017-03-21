@@ -98,12 +98,10 @@ See URL: `https://github.com/alecthomas/gometalinter'"
             (option "--deadline=" flycheck-gometalinter-deadline concat)
             (option-list "--disable=" flycheck-gometalinter-disable-linters concat)
             (option-list "--enable=" flycheck-gometalinter-enable-linters concat)
+            "--checkstyle"
             ".")
-  :error-patterns
-  ((error line-start (file-name) ":" line ":"
-          (optional column) ":error: " (message) line-end)
-   (warning line-start (file-name) ":" line ":"
-          (optional column) ":warning: " (message) line-end))
+   :error-parser flycheck-parse-checkstyle
+   :error-filter flycheck-dequalify-error-ids
    :modes go-mode)
 
 
