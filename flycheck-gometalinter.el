@@ -53,6 +53,11 @@
   :safe #'booleanp
   :type 'boolean)
 
+(flycheck-def-option-var flycheck-gometalinter-errors-only nil gometalinter
+  "Only show errors."
+  :safe #'booleanp
+  :type 'boolean)
+
 (flycheck-def-option-var flycheck-gometalinter-fast nil gometalinter
   "Only run fast linters."
   :safe #'booleanp
@@ -92,6 +97,7 @@ See URL: `https://github.com/alecthomas/gometalinter'"
   :command ("gometalinter"
             (option "--concurrency=" flycheck-gometalinter-concurrency concat flycheck-option-int)
             (option-flag "--vendor" flycheck-gometalinter-vendor)
+            (option-flag "--errors" flycheck-gometalinter-errors-only)
             (option-flag "--disable-all" flycheck-gometalinter-disable-all)
             (option-flag "--fast" flycheck-gometalinter-fast)
             (option-flag "--tests" flycheck-gometalinter-tests)
