@@ -55,6 +55,10 @@ For `use-package` user:
 (setq flycheck-gometalinter-enable-linters '("golint"))
 ;; Set different deadline (default: 5s)
 (setq flycheck-gometalinter-deadline "10s")
+;; Set gometalinter concurrency (default: 16)
+(setq flycheck-gometalinter-concurrency "16")
+;; Set gometalinter output sort order (default: none)
+(setq flycheck-gometalinter-sort "lines")
 ```
 
 [flycheck-ref]: http://www.flycheck.org                 "Flycheck"

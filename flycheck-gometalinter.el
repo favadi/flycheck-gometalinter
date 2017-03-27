@@ -91,6 +91,14 @@ flycheck-gometalinter-enable-linters."
   duration."
   :safe #'stringp)
 
+(flycheck-def-option-var flycheck-gometalinter-concurrency "16" gometalinter
+  "Number of linters to run concurrently."
+  :safe #'stringp)
+
+(flycheck-def-option-var flycheck-gometalinter-sort "none" gometalinter
+  "Sort output by any of none, path, line, column, severity, message, linter."
+  :safe #'stringp)
+
 (flycheck-define-checker gometalinter
   "A all-in-one Go linter.
 See URL: `https://github.com/alecthomas/gometalinter'"
@@ -101,7 +109,9 @@ See URL: `https://github.com/alecthomas/gometalinter'"
             (option-flag "--disable-all" flycheck-gometalinter-disable-all)
             (option-flag "--fast" flycheck-gometalinter-fast)
             (option-flag "--tests" flycheck-gometalinter-tests)
+            (option "--concurrency=" flycheck-gometalinter-concurrency concat)
             (option "--deadline=" flycheck-gometalinter-deadline concat)
+            (option "--sort=" flycheck-gometalinter-sort concat)
             (option-list "--disable=" flycheck-gometalinter-disable-linters concat)
             (option-list "--enable=" flycheck-gometalinter-enable-linters concat)
             "--checkstyle"
