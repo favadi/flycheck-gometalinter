@@ -91,6 +91,10 @@ flycheck-gometalinter-enable-linters."
   duration."
   :safe #'stringp)
 
+(flycheck-def-option-var flycheck-gometalinter-config nil gometalinter
+  "Path to gometalinter configuration file, or nil for none."
+  :safe #'stringp)
+
 (flycheck-define-checker gometalinter
   "A all-in-one Go linter.
 See URL: `https://github.com/alecthomas/gometalinter'"
@@ -104,6 +108,7 @@ See URL: `https://github.com/alecthomas/gometalinter'"
             (option "--deadline=" flycheck-gometalinter-deadline concat)
             (option-list "--disable=" flycheck-gometalinter-disable-linters concat)
             (option-list "--enable=" flycheck-gometalinter-enable-linters concat)
+            (option "--config=" flycheck-gometalinter-config concat)
             "--checkstyle"
             ".")
    :error-parser flycheck-parse-checkstyle
