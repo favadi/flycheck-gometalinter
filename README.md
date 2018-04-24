@@ -55,6 +55,8 @@ For `use-package` user:
 (setq flycheck-gometalinter-enable-linters '("golint"))
 ;; Set different deadline (default: 5s)
 (setq flycheck-gometalinter-deadline "10s")
+;; Use a gometalinter configuration file (default: nil)
+(setq flycheck-gometalinter-config "/path/to/gometalinter-config.json")
 ```
 
 [flycheck-ref]: http://www.flycheck.org                 "Flycheck"
