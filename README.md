@@ -47,7 +47,7 @@ For `use-package` user:
 ;; only run fast linters
 (setq flycheck-gometalinter-fast t)
 ;; use in tests files
-(setq flycheck-gometalinter-test t)
+(setq flycheck-gometalinter-tests t)
 ;; disable linters
 (setq flycheck-gometalinter-disable-linters '("gotype" "gocyclo"))
 ;; Only enable selected linters
